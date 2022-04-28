@@ -9,6 +9,7 @@
 library(dplyr)
 library(readxl)
 pldat <- read_excel("PowerLiftingMeets18to19.xlsx")
+pldat <- data.frame(pldat)
 
 
 # The code below has multiple levels of *if()* statements and a *for()* loop. Examine 
@@ -131,21 +132,33 @@ str(pldat)
 # any of the bench press variables. (The *is.na()* function returns TRUE for missing 
 # values and FALSE for non-missing values.)
 benchp <- pldat %>% 
-  select(Name, Sex, Age, Bench1Kg, Bench2Kg, Bench3Kg, Best3BenchKg, Country)
+  select(Name, Sex, Age, Bench1Kg, Bench2Kg, Bench3Kg, Best3BenchKg, Country) %>% 
+  filter(!is.na(Bench1Kg), !is.na(Bench2Kg), !is.na(Bench3Kg), !is.na(Best3BenchKg))
   
 #10. Now we're going to create a dataset called benchp2 that will be identical to 
 # benchp, but we're going to create it without using dplyr. You will have to select 
 # a subset of rows and a subset of columns. (Hints: Use [] to select portions of a 
 # data frame. In lesson 6 you learned &, |, and !. Use one of those to create your 
 # selection of rows. )
+benchp2 <- pldat[!is.na(pldat$Bench1Kg) & !is.na(pldat$Bench2Kg) & 
+                   !is.na(pldat$Bench3Kg) & !is.na(pldat$Best3BenchKg), 
+                 c(1, 2, 5, 15, 16, 17, 19, 32) ]
 
 
 #11. Using dplyr, find the man and woman from each country with the heaviest 
 # successful bench press (use the Best3BenchKg variable) and output the top ten 
-# weights of both men and women, sorted by gender and weight lifted. Include only the 
-# following variables in the final report: Name, Sex, Age, Best3BenchKg, and Country. 
-# The first 10 rows of the report should look like the file BenchByCountryandSex.png.
-
+# weights of both men and women, sorted by gender and weight lifted (heaviest to
+# lightest). Include only the following variables in the final report: Name, Sex, 
+# Age, Best3BenchKg, and Country. The first 10 rows of the report should look 
+# like the file BenchByCountryandSex.png. Save the report as benchbycountryandsex.
+benchbycountryandsex <- benchp %>% 
+  group_by(Sex, Country) %>% 
+  top_n(1, Best3BenchKg) %>% 
+  ungroup() %>% 
+  group_by(Sex) %>% 
+  top_n(10, Best3BenchKg) %>% 
+  select(Name, Sex, Age, Best3BenchKg, Country) %>% 
+  arrange(Sex, desc(Best3BenchKg))
 
 #12. Suppose you are a 54-year-old man and want to know how your squat weight compares 
 # to athletes of your same age. Create a dataset called *pl50* that: (1) includes all 
@@ -156,9 +169,14 @@ benchp <- pldat %>%
 # your dataset. Use the *unique* function to see all of the Divisions so you know what to 
 # look for. Use *grepl* or *grep* to filter the appropriate age categories.) 
 # https://campus.datacamp.com/courses/intermediate-r/chapter-5-utilities?ex=8
-
+pl50  <-  pldat %>% 
+  filter(Sex == "M", 
+         grepl("50-", Division),
+         !is.na(Best3SquatKg)) %>% 
+  select(Name, Sex, Event, Age, Division, Best3SquatKg, Date)
+  
 
 #13. Let's say you can squat 150 Kilograms (as a 54-year-old man). Are you an 
-# above-average squatter for your age? (Enter the code that will print TRUE or FALSE to
-# indicate whether 150 kilograms is above average.)
+# above-average squatter for your age? Save the answer (TRUE or FALSE) as aboveavg.
+aboveavg <- mean(pl50$Best3SquatKg) < 150
 

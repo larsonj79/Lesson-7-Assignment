@@ -108,9 +108,10 @@ if(num <= 0) {
 
 #11. Using dplyr, find the man and woman from each country with the heaviest 
 # successful bench press (use the Best3BenchKg variable) and output the top ten 
-# weights of both men and women, sorted by gender and weight lifted. Include only the 
-# following variables in the final report: Name, Sex, Age, Best3BenchKg, and Country. 
-# The first 10 rows of the report should look like the file BenchByCountryandSex.png.
+# weights of both men and women, sorted by gender and weight lifted (heaviest to
+# lightest). Include only the following variables in the final report: Name, Sex, 
+# Age, Best3BenchKg, and Country. The first 10 rows of the report should look 
+# like the file BenchByCountryandSex.png. Save the report as benchbycountryandsex.
 
 
 #12. Suppose you are a 54-year-old man and want to know how your squat weight compares 
@@ -125,6 +126,5 @@ if(num <= 0) {
 
 
 #13. Let's say you can squat 150 Kilograms (as a 54-year-old man). Are you an 
-# above-average squatter for your age? (Enter the code that will print TRUE or FALSE to
-# indicate whether 150 kilograms is above average.)
+# above-average squatter for your age? Save the answer (TRUE or FALSE) as aboveavg.
 
