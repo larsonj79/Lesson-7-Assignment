@@ -3,22 +3,18 @@ library(testthat)
 # each call to test_that() produces one test
 # each test represents one point value
 # you can have multiple tests for each question
-library(dplyr)
-library(readxl)
-pldat <- read_excel("PowerLiftingMeets18to19.xlsx")
-pldat <- data.frame(pldat)
 nc1 <- num_class(-1)
 nc2 <- num_class(3)
 nc3 <- num_class(29)
 nc4 <- num_class(1001)
 
-test_that("Q3 Function (visible)", {
+test_that("Q3a (visible)", {
   
   expect_true(class(num_class) == "function")
   
 })
 
-test_that("Q3 FunctionWorks (visible)", {
+test_that("Q3b (visible)", {
   
   expect_true(nc1 == "ERROR")
   expect_true(nc2 == "prime")
