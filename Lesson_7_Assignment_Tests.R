@@ -14,55 +14,55 @@ nc4 <- num_class(1001)
 
 test_that("Q3 Function (visible)", {
   
-  expect_equal(class(num_class), "function")
+  expect_true(class(num_class) == "function")
   
 })
 
-test_that("Q3 Function Works(visible)", {
+test_that("Q3 FunctionWorks (visible)", {
   
-  expect_equal(nc1, "ERROR")
-  expect_equal(nc2, "prime")
-  expect_equal(nc3, "prime")
-  expect_equal(nc4, "odd")
+  expect_true(nc1 == "ERROR")
+  expect_true(nc2 == "prime")
+  expect_true(nc3 == "prime")
+  expect_true(nc4 == "odd")
   
 })
 
 test_that("Q4 nctry1 (visible)", {
   
-  expect_equal(nctry1, "ERROR")
+  expect_true(nctry1 == "ERROR")
   
 })
 
 test_that("Q4 nctry2 (visible)", {
   
-  expect_equal(nctry2, "even")
+  expect_true(nctry2 == "even")
 
 })
 
 test_that("Q4 nctry3 and nctry4 (visible)", {
   
-  expect_equal(nctr3, "prime")
-  expect_equal(nctry4, "even")
+  expect_true(nctry3 == "prime")
+  expect_true(nctry4 == "even")
   
 })
 
 test_that("Q6 Entries 1 to 50 (visible)", {
   
-  expect_equal(numtypes[1], "prime")
-  expect_equal(numtypes[9], "odd")
-  expect_equal(numtypes[23], "prime")
-  expect_equal(numtypes[41], "prime")
-  expect_equal(numtypes[48], "even")
+  expect_true(numtypes[1] == "prime")
+  expect_true(numtypes[9] == "odd")
+  expect_true(numtypes[23] == "prime")
+  expect_true(numtypes[41] == "prime")
+  expect_true(numtypes[48] == "even")
   
 })
 
 test_that("Q6 Entries 51 to 100 (visible)", {
   
-  expect_equal(numtypes[61], "prime")
-  expect_equal(numtypes[79], "prime")
-  expect_equal(numtypes[83], "prime")
-  expect_equal(numtypes[91], "odd")
-  expect_equal(numtypes[98], "even")
+  expect_true(numtypes[61] == "prime")
+  expect_true(numtypes[79] == "prime")
+  expect_true(numtypes[83] == "prime")
+  expect_true(numtypes[91] == "odd")
+  expect_true(numtypes[98] == "even")
   
 })
 
@@ -142,19 +142,10 @@ test_that("Q12 Values 1 (visible)", {
   expect_equal(pl50$Best3SquatKg[3], 182.5, tolerance = 1e-3)
   expect_equal(pl50$Best3SquatKg[7], 185, tolerance = 1e-3)
   expect_equal(pl50$Best3SquatKg[8], 177.5, tolerance = 1e-3)
-  
-})
-test_that("Q12 Values 2 (visible)", {
-  
   expect_equal(pl50$Age[22], 54, tolerance = 1e-3)
   expect_equal(pl50$Best3SquatKg[23], 265, tolerance = 1e-3)
   expect_equal(pl50$Best3SquatKg[27], 210, tolerance = 1e-3)
   expect_equal(pl50$Best3SquatKg[28], 230, tolerance = 1e-3)
-  
-})
-
-test_that("Q12 Values 3 (visible)", {
-  
   expect_equal(pl50$Age[42], 50, tolerance = 1e-3)
   expect_equal(pl50$Best3SquatKg[43], 220, tolerance = 1e-3)
   expect_equal(pl50$Best3SquatKg[57], 230, tolerance = 1e-3)
@@ -164,6 +155,6 @@ test_that("Q12 Values 3 (visible)", {
 
 test_that("Q13 (visible)", {
   
-  expect_equal(aboveavg, FALSE)
+  expect_true(aboveavg == FALSE)
 
 })
