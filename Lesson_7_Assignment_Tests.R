@@ -154,3 +154,4 @@ test_that("Q13 (visible)", {
   expect_true(aboveavg == FALSE)
 
 })
+
