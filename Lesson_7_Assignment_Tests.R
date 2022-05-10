@@ -3,23 +3,10 @@ library(testthat)
 # each call to test_that() produces one test
 # each test represents one point value
 # you can have multiple tests for each question
-nc1 <- num_class(-1)
-nc2 <- num_class(3)
-nc3 <- num_class(29)
-nc4 <- num_class(1001)
 
-test_that("Q3a (visible)", {
+test_that("Q3 (visible)", {
   
   expect_true(class(num_class) == "function")
-  
-})
-
-test_that("Q3b (visible)", {
-  
-  expect_true(nc1 == "ERROR")
-  expect_true(nc2 == "prime")
-  expect_true(nc3 == "prime")
-  expect_true(nc4 == "odd")
   
 })
 
@@ -140,6 +127,11 @@ test_that("Q12 Values 1 (visible)", {
   expect_equal(pl50$Best3SquatKg[8], 177.5, tolerance = 1e-3)
   expect_equal(pl50$Age[22], 54, tolerance = 1e-3)
   expect_equal(pl50$Best3SquatKg[23], 265, tolerance = 1e-3)
+  
+})
+
+test_that("Q12 Values 2 (visible)", {
+  
   expect_equal(pl50$Best3SquatKg[27], 210, tolerance = 1e-3)
   expect_equal(pl50$Best3SquatKg[28], 230, tolerance = 1e-3)
   expect_equal(pl50$Age[42], 50, tolerance = 1e-3)
